@@ -37,6 +37,7 @@ export async function getMeal(id: string) {
 
   return db.query.meals.findFirst({
     where: { id, userId },
+    with: { mealFoodItems: { with: { foodItem: true } } },
   });
 }
 
